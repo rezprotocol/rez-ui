@@ -1,0 +1,25 @@
+{
+  "name": "rez-ui",
+  "private": true,
+  "license": "Apache-2.0",
+  "type": "module",
+  "main": "./src/index.js",
+  "exports": {
+    ".": "./src/index.js",
+    "./framework": "./src/framework/index.js",
+    "./framework/theme.css": "./src/framework/theme.css"
+  },
+  "devDependencies": {
+    "playwright-core": "^1.58.2",
+    "autoprefixer": "^10.4.21",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.17",
+    "vite": "^7.3.1"
+  },
+  "scripts": {
+    "test": "node --test --test-force-exit test/framework.api.test.js test/framework.boundary.test.js",
+    "test:e2e:chat": "node test/e2e/_harness/preflight.js && node --test test/e2e/chat.real-node.auth.e2e.test.js",
+    "build": "vite build",
+    "dev": "vite"
+  }
+}

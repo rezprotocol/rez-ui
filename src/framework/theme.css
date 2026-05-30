@@ -1,0 +1,258 @@
+:root {
+  /* Theme/chat palette */
+  --rez-primary: #00f0ff;
+  --rez-primary-dim: #00a3ad;
+  --rez-accent-red: #ff003c;
+  --rez-bg-dark: #020202;
+  --rez-bg-panel: #0a0a0a;
+  --rez-glass: rgba(255, 255, 255, 0.03);
+  --rez-glass-border: rgba(0, 240, 255, 0.15);
+  --rez-terminal-green: #0f0;
+
+  /* Aliases for components */
+  --rez-bg-0: #020202;
+  --rez-bg-1: #050505;
+  --rez-bg-2: #0a0a0a;
+  --rez-panel: rgba(5, 5, 5, 0.84);
+  --rez-panel-strong: rgba(8, 8, 8, 0.93);
+  --rez-border: rgba(0, 240, 255, 0.22);
+  --rez-text: #eaf7ff;
+  --rez-muted: #8d9aa5;
+  --rez-accent: var(--rez-primary);
+  --rez-accent-strong: var(--rez-primary-dim);
+  --rez-danger: var(--rez-accent-red);
+  --rez-shadow: 0 24px 54px rgba(0, 0, 0, 0.68);
+  --rez-radius-lg: 0.5rem;
+  --rez-radius-md: 0.25rem;
+  --rez-radius-sm: 0.25rem;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+  color: var(--rez-text);
+  font-family: "Manrope", "Avenir Next", "Segoe UI", sans-serif;
+  background:
+    radial-gradient(900px 460px at 50% -8%, rgba(0, 240, 255, 0.15), transparent 70%),
+    radial-gradient(800px 420px at 120% 100%, rgba(255, 0, 60, 0.08), transparent 72%),
+    linear-gradient(180deg, var(--rez-bg-1), var(--rez-bg-0));
+}
+
+.font-mono {
+  font-family: "Space Mono", "Menlo", "SF Mono", monospace;
+}
+
+/* Theme utilities */
+.glass-effect {
+  backdrop-filter: blur(8px);
+  background-color: rgba(5, 5, 5, 0.8);
+  border: 1px solid var(--rez-glass-border);
+}
+
+.scanlines {
+  background: linear-gradient(
+    to bottom,
+    rgba(18, 16, 16, 0) 50%,
+    rgba(0, 0, 0, 0.25) 50%
+  );
+  background-size: 100% 4px;
+}
+
+.grid-pattern {
+  background-image: linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #000;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #1a1a1a;
+  border: 1px solid #000;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--rez-primary);
+}
+
+.glitch-text {
+  position: relative;
+  color: white;
+  letter-spacing: 0.1em;
+}
+
+.glitch-text::before,
+.glitch-text::after {
+  content: attr(data-text);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.glitch-text::before {
+  left: 2px;
+  text-shadow: -1px 0 var(--rez-accent-red);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: rez-glitch-anim 5s infinite linear alternate-reverse;
+}
+
+.glitch-text::after {
+  left: -2px;
+  text-shadow: -1px 0 var(--rez-primary);
+  clip: rect(44px, 450px, 56px, 0);
+  animation: rez-glitch-anim2 5s infinite linear alternate-reverse;
+}
+
+@keyframes rez-glitch-anim {
+  0% { clip: rect(13px, 9999px, 81px, 0); }
+  5% { clip: rect(68px, 9999px, 4px, 0); }
+  10% { clip: rect(98px, 9999px, 8px, 0); }
+  15% { clip: rect(10px, 9999px, 93px, 0); }
+  20% { clip: rect(3px, 9999px, 34px, 0); }
+  25% { clip: rect(78px, 9999px, 62px, 0); }
+  30% { clip: rect(26px, 9999px, 3px, 0); }
+  35% { clip: rect(42px, 9999px, 5px, 0); }
+  40% { clip: rect(13px, 9999px, 93px, 0); }
+  45% { clip: rect(69px, 9999px, 96px, 0); }
+  50% { clip: rect(32px, 9999px, 56px, 0); }
+  55% { clip: rect(10px, 9999px, 12px, 0); }
+  60% { clip: rect(80px, 9999px, 5px, 0); }
+  65% { clip: rect(18px, 9999px, 20px, 0); }
+  70% { clip: rect(73px, 9999px, 16px, 0); }
+  75% { clip: rect(35px, 9999px, 62px, 0); }
+  80% { clip: rect(16px, 9999px, 54px, 0); }
+  85% { clip: rect(56px, 9999px, 34px, 0); }
+  90% { clip: rect(93px, 9999px, 23px, 0); }
+  95% { clip: rect(48px, 9999px, 10px, 0); }
+  100% { clip: rect(61px, 9999px, 52px, 0); }
+}
+
+@keyframes rez-glitch-anim2 {
+  0% { clip: rect(65px, 9999px, 96px, 0); }
+  5% { clip: rect(23px, 9999px, 83px, 0); }
+  10% { clip: rect(48px, 9999px, 35px, 0); }
+  15% { clip: rect(10px, 9999px, 16px, 0); }
+  20% { clip: rect(94px, 9999px, 54px, 0); }
+  25% { clip: rect(50px, 9999px, 7px, 0); }
+  30% { clip: rect(18px, 9999px, 88px, 0); }
+  35% { clip: rect(35px, 9999px, 96px, 0); }
+  40% { clip: rect(63px, 9999px, 3px, 0); }
+  45% { clip: rect(5px, 9999px, 19px, 0); }
+  50% { clip: rect(86px, 9999px, 44px, 0); }
+  55% { clip: rect(12px, 9999px, 73px, 0); }
+  60% { clip: rect(39px, 9999px, 90px, 0); }
+  65% { clip: rect(62px, 9999px, 12px, 0); }
+  70% { clip: rect(28px, 9999px, 66px, 0); }
+  75% { clip: rect(54px, 9999px, 34px, 0); }
+  80% { clip: rect(91px, 9999px, 5px, 0); }
+  85% { clip: rect(20px, 9999px, 18px, 0); }
+  90% { clip: rect(74px, 9999px, 43px, 0); }
+  95% { clip: rect(33px, 9999px, 85px, 0); }
+  100% { clip: rect(11px, 9999px, 62px, 0); }
+}
+
+.rez-app {
+  min-height: 100vh;
+}
+
+.rez-card {
+  background: var(--rez-panel);
+  border: 1px solid var(--rez-border);
+  border-radius: var(--rez-radius-lg);
+  box-shadow: var(--rez-shadow);
+  backdrop-filter: blur(8px);
+}
+
+.rez-btn {
+  appearance: none;
+  border: 1px solid var(--rez-border);
+  border-radius: var(--rez-radius-sm);
+  background: rgba(5, 5, 5, 0.85);
+  color: var(--rez-text);
+  font: inherit;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: transform 120ms ease, background 120ms ease, border-color 120ms ease;
+}
+
+.rez-btn:hover {
+  transform: translateY(-1px);
+  border-color: rgba(0, 240, 255, 0.45);
+  background: rgba(10, 10, 10, 0.9);
+}
+
+.rez-btn:active {
+  transform: translateY(0);
+}
+
+.rez-btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.rez-btn-primary {
+  border-color: rgba(0, 240, 255, 0.5);
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.34), rgba(0, 163, 173, 0.35));
+}
+
+.rez-btn-primary:hover {
+  border-color: rgba(0, 240, 255, 0.75);
+  background: linear-gradient(180deg, rgba(0, 240, 255, 0.52), rgba(0, 163, 173, 0.56));
+}
+
+.rez-btn-danger {
+  border-color: rgba(255, 0, 60, 0.5);
+  background: linear-gradient(180deg, rgba(255, 0, 60, 0.26), rgba(140, 0, 40, 0.3));
+}
+
+.rez-btn-danger:hover {
+  border-color: rgba(255, 0, 60, 0.75);
+  background: linear-gradient(180deg, rgba(255, 0, 60, 0.4), rgba(140, 0, 40, 0.45));
+}
+
+.rez-input {
+  width: 100%;
+  border: 1px solid var(--rez-border);
+  border-radius: var(--rez-radius-sm);
+  background: rgba(0, 0, 0, 0.72);
+  color: var(--rez-text);
+  padding: 10px 12px;
+  font: inherit;
+}
+
+.rez-input::placeholder {
+  color: var(--rez-muted);
+}
+
+.rez-pill {
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--rez-border);
+  border-radius: 999px;
+  padding: 4px 10px;
+  font-size: 12px;
+  color: var(--rez-muted);
+  background: rgba(0, 0, 0, 0.48);
+}
+
+.rez-text-muted {
+  color: var(--rez-muted);
+}

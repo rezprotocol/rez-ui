@@ -1,0 +1,5 @@
+/**
+ * Theme base: re-exports existing framework theme so theme/ layout is the single entry.
+ * Do not replace or remove the existing look-and-feel.
+ */
+@import "../framework/theme.css";
